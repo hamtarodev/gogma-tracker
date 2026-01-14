@@ -1,0 +1,47 @@
+{
+    "weapons": [
+        {
+            "weapon_display_name": "Sword and Shield",
+            "weapon_name": "sword_and_shield"
+        }, {
+            "weapon_display_name": "Long Sword",
+            "weapon_name": "long_sword"
+        }, {
+            "weapon_display_name": "Bow",
+            "weapon_name": "bow"
+        }, {
+            "weapon_display_name": "Lance",
+            "weapon_name": "lance"
+        }, {
+            "weapon_display_name": "Gun Lance",
+            "weapon_name": "gun_lance"
+        }, {
+            "weapon_display_name": "Great Sword",
+            "weapon_name": "great_sword"
+        }, {
+            "weapon_display_name": "Light Bow Gun",
+            "weapon_name": "light_bow_gun"
+        }, {
+            "weapon_display_name": "Heavy Bow Gun",
+            "weapon_name": "heavy_bow_gun"
+        }, {
+            "weapon_display_name": "Switch Axe",
+            "weapon_name": "switch_axe"
+        }, {
+            "weapon_display_name": "Charge Blade",
+            "weapon_name": "charge_blade"
+        }, {
+            "weapon_display_name": "Insect Glaive",
+            "weapon_name": "insect_glaive"
+        }, {
+            "weapon_display_name": "Hammer",
+            "weapon_name": "hammer"
+        }, {
+            "weapon_display_name": "Dual Blades",
+            "weapon_name": "dual_blades"
+        }, {
+            "weapon_display_name": "Hunting Horn",
+            "weapon_name": "hunting_horn"
+        }
+    ]
+}
