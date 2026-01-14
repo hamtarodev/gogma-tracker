@@ -14,6 +14,7 @@ interface TrackerContextModel {
   trackerSessions: () => TrackerSession[]
   addTrackerSession: (session: TrackerSession) => void
   updateTrackerSession: (updatedSession: TrackerSession) => void
+  deleteTrackerSession: (session: TrackerSession) => void
   selectedTrackerSession: () => TrackerSession | undefined
   setSelectedTrackerSession: (session: TrackerSession) => void
   clearAllData: () => void
@@ -66,6 +67,28 @@ export const TrackerProvider: Component<{ children: JSXElement | JSXElement[] }>
     }
   }
 
+  const deleteTrackerSession = (sessionToDelete: TrackerSession) => {
+    const sessions = trackerSessions()
+    const filteredSessions = sessions.filter(s => 
+      !(s.selectedWeapon === sessionToDelete.selectedWeapon &&
+        s.targetSkills.setBonusSkill?.skill_name === sessionToDelete.targetSkills.setBonusSkill?.skill_name &&
+        s.targetSkills.groupSkills?.skill_name === sessionToDelete.targetSkills.groupSkills?.skill_name)
+    )
+    
+    setTrackerSessions(filteredSessions)
+    
+    // If the deleted session was the selected one, clear the selection
+    const currentSelected = selectedTrackerSession()
+    if (currentSelected && 
+        currentSelected.selectedWeapon === sessionToDelete.selectedWeapon &&
+        currentSelected.targetSkills.setBonusSkill?.skill_name === sessionToDelete.targetSkills.setBonusSkill?.skill_name &&
+        currentSelected.targetSkills.groupSkills?.skill_name === sessionToDelete.targetSkills.groupSkills?.skill_name) {
+      setSelectedTrackerSession(undefined)
+    }
+    
+    console.log(`Deleted tracker session: ${sessionToDelete.selectedWeaponDisplayName}`)
+  }
+
   const clearAllData = () => {
     setTrackerSessions([])
     setSelectedTrackerSession(undefined)
@@ -79,6 +102,7 @@ export const TrackerProvider: Component<{ children: JSXElement | JSXElement[] }>
     trackerSessions,
     addTrackerSession,
     updateTrackerSession,
+    deleteTrackerSession,
     selectedTrackerSession,
     setSelectedTrackerSession,
     clearAllData
