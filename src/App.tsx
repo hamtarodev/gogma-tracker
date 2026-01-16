@@ -4,6 +4,7 @@ import {TrackerProvider} from "./context/TrackerContext.tsx";
 import {Route, Router} from "@solidjs/router";
 import HomePage from "./pages/HomePage.tsx";
 import TrackerPage from "./pages/TrackerPage.tsx";
+import './index.css'
 
 const App: Component = () => {
   return (

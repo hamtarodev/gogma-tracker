@@ -2,9 +2,9 @@ import { createContext, useContext, createResource, type Component, type JSXElem
 import { makePersisted } from "@solid-primitives/storage"
 import type {WeaponData, WeaponDetails} from "../interfaces/WeaponsInterfaces"
 import type {ArmorSkillDetails, SetBonusSkillsData, GroupSkillsData} from "../interfaces/ArmorSkillsInterfaces.ts";
-import weaponsData from "../data/weapons.json"
-import setBonusSkillsData from "../data/set_bonus_skills.json"
-import groupSkillsData from "../data/group_skills.json"
+import { weaponsData } from "../data/weapons.ts"
+import { setBonusSkillsData } from "../data/setBonusSkills.ts"
+import { groupSkillsData } from "../data/groupSkills.ts"
 import type {TrackerSession} from "../interfaces/SessionInterfaces.ts";
 
 interface TrackerContextModel {

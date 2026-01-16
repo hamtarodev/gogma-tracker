@@ -8,4 +8,12 @@ export default defineConfig({
     tailwindcss()
   ],
   assetsInclude: ['**/*.svg'],
+  base: "./",
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 })
