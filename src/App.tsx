@@ -16,7 +16,7 @@ const App: Component = () => {
           </header>
           <main>
             <div class="mx-auto px-4 py-6 sm:px-6 lg:px-8">
-              <Router>
+              <Router base={import.meta.env.BASE_URL}>
                 <Route path="/" component={HomePage}/>
                 <Route path='/track' component={TrackerPage}/>
               </Router>
