@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss()
   ],
   assetsInclude: ['**/*.svg'],
-  base: "./",
+  base: "/gogma-tracker/",
   build: {
     rollupOptions: {
       output: {
