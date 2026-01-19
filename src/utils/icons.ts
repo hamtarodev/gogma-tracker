@@ -5,6 +5,7 @@ export {
   ChartLine,
   Check,
   Flame,
+  Plus,
   Scaling,
   Sparkles,
   Target,
