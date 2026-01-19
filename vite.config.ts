@@ -9,7 +9,7 @@ export default defineConfig(async ({mode}) => {
       tailwindcss()
     ],
     assetsInclude: ['**/*.svg'],
-    base: mode === "prod" ? '/gogma-tracker/' : './',
+    base: mode === "production" ? '/gogma-tracker/' : './',
     build: {
       rollupOptions: {
         output: {
