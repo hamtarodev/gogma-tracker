@@ -1,4 +1,4 @@
-import { createContext, useContext, createResource, type Component, type JSXElement, type Resource, createSignal } from "solid-js"
+import { createContext, useContext, type Component, type JSXElement, createSignal, type Accessor } from "solid-js"
 import { makePersisted } from "@solid-primitives/storage"
 import type {WeaponData, WeaponDetails} from "../interfaces/WeaponsInterfaces"
 import type {ArmorSkillDetails, SetBonusSkillsData, GroupSkillsData} from "../interfaces/ArmorSkillsInterfaces.ts";
@@ -8,9 +8,9 @@ import { groupSkillsData } from "../data/groupSkills.ts"
 import type {TrackerSession} from "../interfaces/SessionInterfaces.ts";
 
 interface TrackerContextModel {
-  weapons: Resource<WeaponDetails[]>,
-  setBonusSkills: Resource<ArmorSkillDetails[]>
-  groupSkills: Resource<ArmorSkillDetails[]>
+  weapons: Accessor<WeaponDetails[]>,
+  setBonusSkills: Accessor<ArmorSkillDetails[]>
+  groupSkills: Accessor<ArmorSkillDetails[]>
   trackerSessions: () => TrackerSession[]
   addTrackerSession: (session: TrackerSession) => void
   updateTrackerSession: (updatedSession: TrackerSession) => void
@@ -22,22 +22,11 @@ interface TrackerContextModel {
 
 const TrackerContext = createContext<TrackerContextModel>()
 
-const loadWeapons = (): WeaponDetails[] => {
-  return (weaponsData as WeaponData).weapons
-}
-
-const loadSetBonusSkills = (): ArmorSkillDetails[] => {
-  return (setBonusSkillsData as SetBonusSkillsData).set_bonus_skills
-}
-
-const loadGroupSkills = (): ArmorSkillDetails[] => {
-  return (groupSkillsData as GroupSkillsData).group_skills
-}
+const weapons = (): WeaponDetails[] => (weaponsData as WeaponData).weapons
+const setBonusSkills = (): ArmorSkillDetails[] => (setBonusSkillsData as SetBonusSkillsData).set_bonus_skills
+const groupSkills = (): ArmorSkillDetails[] => (groupSkillsData as GroupSkillsData).group_skills
 
 export const TrackerProvider: Component<{ children: JSXElement | JSXElement[] }> = (props) => {
-  const [weapons] = createResource(loadWeapons)
-  const [setBonusSkills] = createResource(loadSetBonusSkills)
-  const [groupSkills] = createResource(loadGroupSkills)
   const [trackerSessions, setTrackerSessions] = makePersisted(createSignal<TrackerSession[]>([]), {
     name: 'trackerSessions'
   })
